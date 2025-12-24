@@ -120,52 +120,230 @@
 
 //generic interface
 
-interface Developer<T , b>{
-    name:string,
-    computer:{
-        name:string,
-        model:string,
-        brand:string,
-    }
-    smartWatch:T,
-    bike?:b
+// interface Developer<T , b>{
+//     name:string,
+//     computer:{
+//         name:string,
+//         model:string,
+//         brand:string,
+//     }
+//     smartWatch:T,
+//     bike?:b
+// }
+
+// const poorDeveloper:Developer<{name:string, price:number}, null>={
+//     name:'Animes',
+//     computer:{
+//         name:'asus',
+//         model:'gigasinic',
+//         brand:'samsung'
+//     },
+// smartWatch:{
+//     name:'apple',
+//     price:20000,
+// }
+
+// }
+
+// type Bike={
+//     name:string,
+//     model:string
+// }
+// const richDeveloper:Developer<{name:string, price:number}, Bike>={
+//     name:'Animes',
+//     computer:{
+//         name:'asus',
+//         model:'gigasinic',
+//         brand:'samsung'
+//     },
+// smartWatch:{
+//     name:'apple',
+//     price:20000,
+// },
+// bike:{
+//     name:'yamaha',
+//     model:'r15'
+// }
+// }
+
+
+
+// const careateArray=<T>(param:T):T[]=>{
+//     return [param]
+// }
+
+// console.log(careateArray<string>('animes barman'))
+
+// type user={
+//     name:string;
+//     age:number;
+// }
+// console.log(careateArray<user>({name:'animes', age:30}))
+
+// const addCourseTo=<T extends {id:number; name:string; age:number}>(student:T)=>{
+
+//     const corse='next leverl web development';
+
+//     return {
+//         corse,
+//         ...student
+//     }
+
+// }
+
+// console.log(addCourseTo({id:20,name:'ánimes barman', age:30}));
+
+
+// //constent 
+
+// type Vehicle={
+//     bike:string;
+//     car:string;
+//     ship:string;
+    
+// }
+
+// type Owner=keyof Vehicle;
+
+// type Owner1='bike' | 'car' | 'ship';
+
+// const person:Owner='car';
+
+
+
+// const getProperty=<x,y extends keyof x>(obj:x, key:y)=>{
+
+//     return obj[key]
+
+// }
+
+// const user={
+//     name:'animes',
+//     age:26
+// }
+
+// console.log(getProperty(user, 'name'))
+
+
+//promise
+
+// const creratePromise=(data:string):Promise<string>=>{
+//     return new Promise<string>((res, rej)=>{
+//         if(data){
+//             res(data)
+
+//         }else{
+//             rej('data not found')
+//         }
+//     })
+// }
+
+
+// const showData=async()=>{
+
+//     const data=await creratePromise('data pass parameter');
+
+//     console.log(data);
+
+// }
+
+// showData()
+
+
+
+
+//conditional type
+
+// type X=number;
+// type Y=undefined;
+
+// type ok=X extends null ? 'true' : Y extends undefined ? 'false' : 'true'  //consditinoal type
+
+
+// type Shakib={
+//     bike:string;
+//     car:string;
+//     ship:string
+// }
+
+
+// type cheVehcle<T>=T extends keyof Shakib ? true :false;
+
+// type haveShip=cheVehcle<'bjike'>
+
+
+
+//map type
+
+// const arrayOfNumber:number[]=[20,15,0,15,0,1,5,0,1,54,0,1,44,0];
+
+
+// const arrofNumberToString:string[]=arrayOfNumber.map(item=> item.toString())
+
+
+// console.log(arrofNumberToString);
+
+
+// type AreaNumber={
+
+//     height:number;
+//     widhth:number
+// }
+
+
+
+// type AreaString={
+//     [index in keyof AreaNumber ]:string
+// }
+
+
+
+//utility types
+
+type Person={
+    name:string;
+    age:number;
+    email?:string;
+    number:number;
+
 }
 
-const poorDeveloper:Developer<{name:string, price:number}, null>={
-    name:'Animes',
-    computer:{
-        name:'asus',
-        model:'gigasinic',
-        brand:'samsung'
-    },
-smartWatch:{
-    name:'apple',
-    price:20000,
-}
-
-}
-
-type Bike={
-    name:string,
-    model:string
-}
-const richDeveloper:Developer<{name:string, price:number}, Bike>={
-    name:'Animes',
-    computer:{
-        name:'asus',
-        model:'gigasinic',
-        brand:'samsung'
-    },
-smartWatch:{
-    name:'apple',
-    price:20000,
-},
-bike:{
-    name:'yamaha',
-    model:'r15'
-}
-}
+type NameAGe=Pick<Person, 'name' | 'age'>
 
 
 
+//omit
+
+type contactInfo=Omit<Person , 'email'>
+
+//required
+
+
+type personalREquired=Required<Person>
+
+
+//partial
+
+type personPartial=Partial<Person>
+
+//red only
+
+type personREdOnl=Readonly<Person>
+
+
+//Record type
+
+type myObj={
+    a:string;
+    b:string;
+}
+
+type Myobj=
+
+
+const obj1:myObj={
+    a:'salam',
+    b:'kamal'
+
+}
 
